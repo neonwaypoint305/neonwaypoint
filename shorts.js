@@ -1,7 +1,7 @@
 /* Neon Waypoint: homepage video blocks. One file. Needs <script src="shorts.js" defer></script> before </body>.
    Reads data/videos.json (kept fresh by the GitHub Action).
    1) The top button opens the newest long video.
-   2) A "Newest guide" block under the hero: big thumbnail that plays in place, title, Watch on YouTube.
+   2) A "Newest video" block under the hero: big thumbnail that plays in place, title, Watch on YouTube.
    3) A "Latest Shorts" grid (2 columns, first 6, "Show more" for the rest) sits under the hero, with a channel link below it. No Shorts yet = no rail. */
 (function () {
   var ID = /^[A-Za-z0-9_-]{11}$/;
@@ -64,7 +64,7 @@
     var cta = document.querySelector("main .cta");
     if (!cta || !newest) return;
     cta.href = watch(newest.id);
-    cta.textContent = "Watch the newest guide";
+    cta.textContent = "Watch the newest video";
   }
 
   var active = null;
@@ -109,7 +109,7 @@
     c.appendChild(frame);
     c.appendChild(el("p", "nw-title", s.title));
     if (s.parent && ID.test(s.parent)) {
-      c.appendChild(link(el("a", "nw-guide", "Related guide →"), watch(s.parent)));
+      c.appendChild(link(el("a", "nw-guide", "Related video →"), watch(s.parent)));
     } else {
       c.appendChild(el("span", "nw-guide"));
     }
@@ -118,8 +118,8 @@
 
   function feature(v) {
     var sec = el("section", "nw-feature");
-    sec.setAttribute("aria-label", "Newest guide");
-    sec.appendChild(el("h2", "", "Newest guide"));
+    sec.setAttribute("aria-label", "Newest video");
+    sec.appendChild(el("h2", "", "Newest video"));
     var frame = el("div", "nw-frame");
     player(frame, v, sec, true);
     sec.appendChild(frame);
