@@ -9,7 +9,8 @@ Only PUBLIC videos appear in the feeds, so scheduled/private ones are never show
 Each Short is linked to its full guide in this order:
   1. data/funnel.json "overrides": {"<shortId>": "<longId>"}
   2. first youtu.be / watch?v= link in the Short's description that points at a long video
-  3. funnel.json "default_long", else the newest long video
+  3. funnel.json "default_long" if set; otherwise no guide (the card links to the channel instead).
+     A wrong guide is worse than no guide, so there is no "newest video" guess.
 """
 import json, os, re, sys, urllib.request, urllib.error
 import xml.etree.ElementTree as ET
@@ -104,15 +105,13 @@ def main():
     long_ids = {v["id"] for v in longs_all}
     fun = json.load(open(FUNNEL)) if os.path.exists(FUNNEL) else {}
     overrides, default_long = fun.get("overrides", {}), fun.get("default_long")
-    newest_long = longs_all[0]["id"] if longs_all else None
-    prev_parent = {v["id"]: v.get("parent") for v in old.get("shorts", [])}
 
     cards = []
     for v in shorts:
         parent = overrides.get(v["id"])
         if not parent:
             parent = next((m for m in LINK_RE.findall(v["desc"]) if m in long_ids), None)
-        parent = parent or default_long or newest_long or prev_parent.get(v["id"])
+        parent = parent or default_long
         cards.append({"id": v["id"], "title": v["title"], "published": v["published"], "parent": parent})
     shorts_all = merge(cards, old.get("shorts", []), MAX_SHORTS)
 
