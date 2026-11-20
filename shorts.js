@@ -4,17 +4,17 @@
   var ID = /^[A-Za-z0-9_-]{11}$/;
   var CHANNEL = "https://www.youtube.com/channel/UC72GnGlxY2Y8Sbrt71WDqLA";
   var CSS = [
-    ".nw-shorts{position:relative;z-index:1;padding:8px 0 56px;text-align:center}",
+    ".nw-shorts{position:relative;z-index:1;padding:28px 0 56px;text-align:center;background:linear-gradient(to bottom,rgba(7,10,26,0),rgba(7,10,26,.6) 22%)}",
     ".nw-shorts h2{font-family:'Bowlby One',system-ui,sans-serif;font-weight:400;font-size:clamp(22px,4vw,32px);letter-spacing:.04em;text-transform:uppercase;color:#E4DCFF;text-shadow:0 0 14px rgba(250,34,124,.55)}",
     ".nw-shorts .nw-sub{color:var(--muted,#A9B3D6);margin:6px 24px 22px;font-size:16px}",
     ".nw-rail{display:flex;gap:16px;overflow-x:auto;padding:6px 24px 18px;scroll-snap-type:x proximity;justify-content:safe center;scrollbar-width:thin;scrollbar-color:#FA227C #141B3D}",
-    ".nw-card{flex:0 0 190px;scroll-snap-align:center;text-align:left}",
+    ".nw-card{flex:0 0 176px;scroll-snap-align:center;text-align:left}",
     ".nw-frame{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#141B3D;border:0;padding:0;cursor:pointer;box-shadow:0 0 0 1.5px rgba(46,197,255,.55),0 10px 28px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}",
     ".nw-frame:hover,.nw-frame:focus-visible{transform:translateY(-3px);box-shadow:0 0 0 2px #FA227C,0 14px 34px rgba(250,34,124,.35);outline:none}",
     ".nw-frame img,.nw-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}",
     ".nw-play{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(11,16,38,.62);box-shadow:0 0 0 2px #fff inset,0 0 18px rgba(250,34,124,.6)}",
     ".nw-play::after{content:'';position:absolute;left:21px;top:16px;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}",
-    ".nw-title{margin:10px 2px 6px;font-size:14px;line-height:1.35;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}",
+    ".nw-title{margin:10px 2px 6px;min-height:2.7em;font-size:14px;line-height:1.35;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}",
     ".nw-guide{display:inline-block;font-size:14px;font-weight:700;color:#2EC5FF;text-decoration:none;margin:0 2px}",
     ".nw-guide:hover,.nw-guide:focus-visible{color:#fff;text-decoration:underline;outline:none}",
     ".nw-more{margin-top:6px}",
