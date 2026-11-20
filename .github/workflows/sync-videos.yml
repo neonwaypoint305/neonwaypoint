@@ -1,0 +1,22 @@
+name: Sync videos from YouTube
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # every 3 hours
+  workflow_dispatch: {}        # Run workflow button
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/sync_videos.py
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git config user.name "nw-site-bot"
+            git config user.email "noreply@neonwaypoint.com"
+            git add data/
+            git commit -m "Sync videos from YouTube"
+            git push
+          fi
